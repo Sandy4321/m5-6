@@ -42,7 +42,6 @@ def build_df(main_df, calendar_df, price_df, store_id_):
                          var_name='d', value_name='demand')
     out_df = out_df.merge(right=calendar_df, how='outer', on='d')
     out_df = out_df.merge(right=price_df, how='outer', on=['store_id', 'item_id', 'wm_yr_wk'])
-    out_df.d = out_df.d.astype(str)
     return reduce_mem_usage(out_df)
 
 def train_test_split(input_df, train_size, test_size):
